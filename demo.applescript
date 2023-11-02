@@ -17,7 +17,7 @@ on isApplicationRunning(appName)
 	end tell
 end isApplicationRunning
 
--- Distracts user with fake pdf application
+-- Distracts user with fake pdf application (can use safari instead if needed)
 tell application "Google Chrome"
 	launch
 end tell
