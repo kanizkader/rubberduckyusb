@@ -19,15 +19,15 @@ on isApplicationRunning(appName)
 end isApplicationRunning
 
 -- Distracts user with fake pdf application
-tell application "Google Chrome"
+tell application "Safari"
 	launch
 end tell
 
 -- Reopens the window multiple times
 set counter to 0
 repeat
-	if (isApplicationRunning("Google Chrome")) then
-		tell application "Google Chrome"
+	if (isApplicationRunning("Safari")) then
+		tell application "Safari"
 			launch
 			make new window
 			open location "https://myfuture.edu.au/docs/default-source/entry-level-resumes/resume_sample_student8ea47e04a8fe67e6b7acff0000376a3b.pdf?sfvrsn=c43a27d9_6"
